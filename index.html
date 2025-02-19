@@ -1,78 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sohail Music - AI Hacking Music Generator</title>
-    <style>
-        body {
-            background-color: black;
-            color: #00ff00; /* Neon Green */
-            font-family: "Courier New", monospace;
-            text-align: center;
-            padding: 20px;
-        }
-        h1 {
-            text-shadow: 0px 0px 10px red; /* Glowing Red */
-        }
-        input, button {
-            padding: 10px;
-            margin: 10px;
-            width: 80%;
-            font-size: 16px;
-            border: 2px solid red;
-            background: black;
-            color: #00ff00; /* Green Text */
-            box-shadow: 0px 0px 10px red; /* Glowing effect */
-        }
-        button:hover {
-            background: red;
-            color: black;
-            box-shadow: 0px 0px 20px #00ff00; /* Neon Green Glow */
-        }
-        audio {
-            margin-top: 20px;
-            width: 100%;
-        }
-        .matrix-animation {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.gif');
-            opacity: 0.2;
-            pointer-events: none;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hacker Chatbot</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="matrix-animation"></div>
-    <h1>SOHAIL MUSIC 🎵💻</h1>
-    <p>Enter a theme and generate an AI-powered song.</p>
-    
-    <input type="text" id="prompt" placeholder="e.g., Cyberpunk Hack, Dark Techno">
-    <button onclick="generateSong()">Generate Music</button>
+  <div class="chat-container">
+    <div id="chat-box" class="chat-box">
+      <!-- Chat messages will appear here -->
+    </div>
+    <input type="text" id="user-input" class="user-input" placeholder="Type your message..." />
+    <button id="send-button" class="send-button">Send</button>
+  </div>
 
-    <div id="music"></div>
-
-    <script>
-        async function generateSong() {
-            const prompt = document.getElementById('prompt').value;
-            const response = await fetch('/generate_music', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ prompt })
-            });
-            const data = await response.json();
-            if (data.song_url) {
-                document.getElementById('music').innerHTML = `<audio controls><source src="${data.song_url}" type="audio/mpeg"></audio>`;
-            } else {
-                document.getElementById('music').innerText = "Error: " + data.error;
-            }
-        }
-    </script>
+  <script src="script.js"></script>
 </body>
 </html>
