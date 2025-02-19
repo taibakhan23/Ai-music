@@ -4,11 +4,11 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 
 # Set your Amper Music API key here
-API_KEY = 'your-amper-api-key'
+API_KEY = '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'
 
 # Function to generate music using Amper API
 def generate_music(prompt):
-    url = "https://api.ampermusic.com/v1/compositions"  # Replace with actual Amper endpoint
+    url = "https://chatgpt.com/"  # Replace with actual Amper endpoint
     headers = {
         'Authorization': f'Bearer {API_KEY}',
         'Content-Type': 'application/json'
